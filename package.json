@@ -1,13 +1,16 @@
 {
   "name": "react-weather-app",
-  "homepage": "https://ihorkoi.github.io/react-weather-app",
+  "homepage": "https://ihorkoi.github.io/react-weather-appnpm ",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^1.5.1",
     "gh-pages": "^6.0.0",
+    "nanoid": "^5.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "0.9.5"
+    "react-scripts": "^5.0.1",
+    "webpack": "^1.14.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -16,5 +19,27 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
