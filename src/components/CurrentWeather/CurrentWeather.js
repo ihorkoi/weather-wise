@@ -9,4 +9,6 @@ export const CurrentCardWrapper = styled.div`
 `;
 export const CardsWrapper = styled.ul`
   display: flex;
+  justify-content: center;
+  margin: 0 auto;
 `;

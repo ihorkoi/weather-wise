@@ -1,7 +1,6 @@
-import { CurrentCardWrapper } from "./WeatherCurrentCard.js";
+import { CurrentCardWrapper } from "./CurrentWeather.js";
 
-export const WeatherCurrentCard = ({ forecastday, current }) => {
-  console.log(forecastday.date);
+export const CurrentWeather = ({ forecastday, current }) => {
   const date = new Date(forecastday.date);
   const weekday = [
     "Sunday",
@@ -12,12 +11,14 @@ export const WeatherCurrentCard = ({ forecastday, current }) => {
     "Friday",
     "Saturday",
   ];
-  console.log(date);
+  // console.log(date);
   return (
-    <li>
+    <div>
       <CurrentCardWrapper>
         <div>
-          <img src={forecastday.day.condition.icon} alt="" />
+          <img src="https://placehold.co/100x100" alt="" />
+
+          {/* <img src={forecastday.day.condition.icon} alt="" /> */}
         </div>
         <div>
           <ul>
@@ -31,6 +32,6 @@ export const WeatherCurrentCard = ({ forecastday, current }) => {
           </ul>
         </div>
       </CurrentCardWrapper>
-    </li>
+    </div>
   );
 };
