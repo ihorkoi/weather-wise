@@ -20,7 +20,7 @@ export const WeatherWrapper = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [forecast, setForecast] = useState([]);
   const [day, setDay] = useState(0);
-
+console.log(isLoading)
   useEffect(() => {
     if (query) {
       setIsLoading(true);
