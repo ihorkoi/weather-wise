@@ -1,18 +1,25 @@
 import { CurrentWeather } from "../CurrentWeather/CurrentWeather.jsx";
-import { ForecastWrapper } from "components/ForecastWrapper/ForecastWrapper.jsx";
+import { ForecastWrapper } from "../ForecastWrapper/ForecastWrapper.jsx";
 import { fetchData } from "../../api.js";
 import { useEffect, useState } from "react";
-import { WeatherContainer } from "./WeatherWrapper.js";
+// import { WeatherContainer } from "./WeatherWrapper.js";
+import { WeatherDetails } from "../WeatherDetails/WeatherDetails.jsx";
 
 export const WeatherWrapper = (props) => {
-  const {
-    state: { query, weather },
-    setForecastData,
-    setWeatherData,
-  } = props;
+  const { query } = props;
+  const weekday = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
   const [isLoading, setIsLoading] = useState(false);
-  console.log(weather);
+  const [forecast, setForecast] = useState([]);
+  const [day, setDay] = useState(0);
 
   useEffect(() => {
     if (query) {
@@ -20,24 +27,44 @@ export const WeatherWrapper = (props) => {
       fetchData(query)
         .then(({ data }) => {
           console.log(data);
-          setWeatherData(data.forecast.forecastday);
-          setForecastData(data.forecast);
+          setForecast(data.forecast.forecastday);
         })
         .finally(setIsLoading(false));
-      // console.log("test");
-      // setIsLoading(false);
     }
-  }, [query, setWeatherData, setForecastData]);
+  }, [query]);
+  const onForecastClick = (evt) => {
+    setDay(
+      forecast.findIndex((data) => {
+        return data.date === evt.currentTarget.getAttribute("date");
+      })
+    );
+  };
 
   return (
-    <WeatherContainer>
-      <div>{isLoading ? "yes" : "no"}</div>
-      <div>
-        <CurrentWeather forecastday={weather[0]} />
+    <div className="weather-wrapper">
+
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        {forecast.length > 0 ? (
+          <CurrentWeather forecastday={forecast[day]} place={query} />
+        ) : (
+          ""
+        )}
+        <ForecastWrapper
+          forecast={forecast}
+          weekday={weekday}
+          onForecastClick={onForecastClick}
+        />
       </div>
-      <div>
-        <ForecastWrapper weather={weather} />
+      <div
+        // className="CurrentWeatherDescription"
+        style={{ border: "1px solid black" }}
+      >
+        {forecast.length > 0 ? (
+          <WeatherDetails forecastday={forecast[day]} />
+        ) : (
+          ""
+        )}
       </div>
-    </WeatherContainer>
+    </div>
   );
 };

@@ -1,6 +1,6 @@
-import { CurrentCardWrapper } from "./CurrentWeather.js";
+// import { CurrentCardWrapper } from "./CurrentWeather.js";
 
-export const CurrentWeather = ({ forecastday, current }) => {
+export const CurrentWeather = ({ forecastday, place }) => {
   const date = new Date(forecastday.date);
   const weekday = [
     "Sunday",
@@ -11,27 +11,34 @@ export const CurrentWeather = ({ forecastday, current }) => {
     "Friday",
     "Saturday",
   ];
-  // console.log(date);
-  return (
-    <div>
-      <CurrentCardWrapper>
-        <div>
-          <img src="https://placehold.co/100x100" alt="" />
 
-          {/* <img src={forecastday.day.condition.icon} alt="" /> */}
-        </div>
-        <div>
-          <ul>
-            <li>{forecastday.day.condition.text}</li>
-            <li>
-              T: {forecastday.day.mintemp_c}
-              {String.fromCodePoint(0x000b0)}...{forecastday.day.maxtemp_c}
-              {String.fromCodePoint(0x000b0)}
-            </li>
-            <li>{weekday[date.getDay()]}</li>
-          </ul>
-        </div>
-      </CurrentCardWrapper>
+  return (
+    <div className="current-card-wrapper">
+      <div className="card-info">
+        {/* <img src="https://placehold.co/100x100" alt="" /> */}
+        <p>{place.charAt(0).toUpperCase() + place.slice(1)}</p>
+        <p>{date.toDateString().split(" ").slice(1).join(" ")}</p>
+        <p>{weekday[date.getDay()]}</p>
+      </div>
+      <img src={forecastday.day.condition.icon} alt="" />
+      <div>
+        <ul>
+          <li>
+            {/* T: {Math.round(forecastday.day.mintemp_c)}
+            {String.fromCodePoint(0x000b0)}...
+            {Math.round(forecastday.day.maxtemp_c)}
+          {String.fromCodePoint(0x000b0)} */}
+            T:{" "}
+            {/* {(Math.round(forecastday.day.mintemp_c) +
+              Math.round(forecastday.day.maxtemp_c)) /
+              2} */}
+              {forecastday.day.avgtemp_c}
+            {String.fromCodePoint(0x000b0)}C
+          </li>
+              <li>{forecastday.day.condition.text}</li>
+          {/* <li>{weekday[date.getDay()]}</li> */}
+        </ul>
+      </div>
     </div>
   );
 };

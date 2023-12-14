@@ -1,0 +1,77 @@
+@import-normalize;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ .submit-form{
+    margin: 16px auto;
+    width: 256px;
+ }
+ .submit-form input{
+    margin-right: 4px;
+ }
+
+ .weather-wrapper{
+    display: flex;
+    justify-content: center;
+    height: 400px;
+ }
+
+ .current-card-wrapper{
+    width: 250px;
+    height: 300px;
+    /* display: flex; */
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 8px;
+ }
+
+ .card-info{
+    padding: 12px;
+    text-align: left;
+ }
+
+ .forecast-list{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    /* gap: 20px; */
+    /* flex-direction: column; */
+    margin: 0 auto;
+ }
+ .forecast-list-item{
+    width: 100%;
+ }
+.forecast-list-item:hover{
+    background: tomato;
+}
+.weather-details-general{
+    padding: 8px;
+    width: 200px;
+}
+.weather-detail-hour{
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 12px; */
+    /* justify-content: space-between; */
+}
+.weather-detail-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    
+}
