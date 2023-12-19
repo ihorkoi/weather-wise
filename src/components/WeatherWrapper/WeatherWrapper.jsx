@@ -20,24 +20,28 @@ export const WeatherWrapper = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [forecast, setForecast] = useState([]);
   const [day, setDay] = useState(0);
+  const [activeDay, setActiveDay] = useState(null);
+
 console.log(isLoading)
+
   useEffect(() => {
     if (query) {
       setIsLoading(true);
       fetchData(query)
         .then(({ data }) => {
-          console.log(data);
           setForecast(data.forecast.forecastday);
         })
-        .finally(setIsLoading(false));
+        .catch(err=>{console.log(err)})
+        .finally(setIsLoading(false)) ;
     }
   }, [query]);
+
   const onForecastClick = (evt) => {
-    setDay(
-      forecast.findIndex((data) => {
-        return data.date === evt.currentTarget.getAttribute("date");
-      })
-    );
+    const idx = forecast.findIndex((data) => {
+      return data.date === evt.currentTarget.getAttribute("date");
+    })
+    setDay(idx);
+    setActiveDay(evt.currentTarget.getAttribute("date"))
   };
 
   return (
@@ -52,12 +56,13 @@ console.log(isLoading)
         <ForecastWrapper
           forecast={forecast}
           weekday={weekday}
+          activeDay={activeDay}
           onForecastClick={onForecastClick}
         />
       </div>
       <div
         // className="CurrentWeatherDescription"
-        style={{ border: "1px solid black" }}
+        // style={{ border: "1px solid black" }}
       >
         {forecast.length > 0 ? (
           <WeatherDetails forecastday={forecast[day]} />

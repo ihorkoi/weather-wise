@@ -14,6 +14,7 @@ export const CurrentWeather = ({ forecastday, place }) => {
 
   return (
     <div className="current-card-wrapper">
+      <div className='card-photo-wrapper'>
       <div className="card-info">
         {/* <img src="https://placehold.co/100x100" alt="" /> */}
         <p>{place.charAt(0).toUpperCase() + place.slice(1)}</p>
@@ -38,6 +39,7 @@ export const CurrentWeather = ({ forecastday, place }) => {
               <li>{forecastday.day.condition.text}</li>
           {/* <li>{weekday[date.getDay()]}</li> */}
         </ul>
+      </div>
       </div>
     </div>
   );
