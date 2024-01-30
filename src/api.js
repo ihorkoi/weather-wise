@@ -9,6 +9,6 @@ export const fetchData = async (query) => {
     );
     return response;
   } catch (err) {
-    throw new Error('Something went wrong')
+    throw new Error(err.response.data.error.message)
   }
 }

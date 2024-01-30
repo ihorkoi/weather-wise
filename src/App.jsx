@@ -3,6 +3,7 @@ import { useState } from "react";
 import { WeatherWrapper } from "components/WeatherWrapper/WeatherWrapper.jsx";
 import { fetchData } from "api";
 import { ClipLoader } from "react-spinners";
+import Notiflix from "notiflix";
 
 export const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,18 +12,29 @@ export const App = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setQuery(evt.target.query.value);
-    if (evt.target.query.value) {
-      setIsLoading(true);
-      fetchData(evt.target.query.value)
-        .then(({ data }) => {
-          setForecast(data.forecast.forecastday);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    const inputValue = evt.target.query.value;
+
+    if (!inputValue) {
+      Notiflix.Notify.failure("Sorry, incorrect query");
+      evt.target.reset();
+      return;
     }
+    if (!inputValue.match(/^[a-zA-Z]+$/)) {
+      Notiflix.Notify.failure("Please, form queries in English");
+      evt.target.reset();
+      return;
+    }
+    setQuery(inputValue);
+    setIsLoading(true);
+    fetchData(inputValue)
+      .then(({ data }) => {
+        setForecast(data.forecast.forecastday);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        Notiflix.Notify.failure(err.message);
+        setIsLoading(false);
+      });
   };
   const override = {
     display: "block",
@@ -32,6 +44,13 @@ export const App = () => {
   return (
     <>
       <header>
+        <div style={{ textAlign: "center" }}>
+          <h1>WeatherWize</h1>
+          <p>
+            Enter a location or city name to check the current weather and
+            forecast. For example, 'Kyiv' or 'New York.
+          </p>
+        </div>
         <SubmitForm handleSubmit={handleSubmit} />
       </header>
       <div className="App">

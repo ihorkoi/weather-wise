@@ -100,6 +100,7 @@ p {
 }
 .forecast-list-item {
   width: 100%;
+  padding-bottom: 4px;
   cursor: pointer;
   -webkit-transition: 200ms ease;
   -o-transition: 200ms ease;
@@ -143,7 +144,7 @@ p {
   .weather-wrapper {
     flex-direction: column;
     height: 100%;
-    width: 257px;
+    width: 300px;
     align-items: center;
   }
   .weather-details-general {

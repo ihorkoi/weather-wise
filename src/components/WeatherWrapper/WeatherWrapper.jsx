@@ -29,7 +29,7 @@ export const WeatherWrapper = (props) => {
   };
 
   return (
-    <div className="weather-wrapper">
+    <article className="weather-wrapper">
       <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
         {forecast.length > 0 ? (
           <CurrentWeather forecastday={forecast[day]} place={query} />
@@ -50,6 +50,6 @@ export const WeatherWrapper = (props) => {
           ""
         )}
       </div>
-    </div>
+    </article>
   );
 };
