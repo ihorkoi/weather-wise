@@ -1,17 +1,22 @@
-import { nanoid } from "nanoid";
-// import { ForecastList } from "./ForecastWrapper";
-
-export const ForecastWrapper = ({ forecast, weekday, onForecastClick, activeDay }) => {
+export const ForecastWrapper = ({
+  forecast,
+  weekday,
+  onForecastClick,
+  activeDay,
+}) => {
   return (
-    <div 
-    // style={{ border: "1px solid black" }}
-    >
+    <div>
       <ul className="forecast-list">
         {forecast.map((data) => {
-          const key = nanoid()
           return (
-            <li key={key} onClick={onForecastClick} date={data.date} className={`forecast-list-item ${activeDay === data.date? 'active':''}`}>
-              
+            <li
+              key={data.date}
+              onClick={onForecastClick}
+              date={data.date}
+              className={`forecast-list-item ${
+                activeDay === data.date ? "active" : ""
+              }`}
+            >
               <div>
                 <img src={data.day.condition.icon} alt="" />
                 <p>{weekday[new Date(data.date).getDay()]}</p>
