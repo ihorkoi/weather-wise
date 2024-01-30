@@ -48,7 +48,7 @@ export const App = () => {
           <h1>WeatherWise</h1>
           <p>
             Enter a location or city name to check the current weather and
-            forecast. For example, 'Kyiv' or 'New York.
+            forecast. For example, 'Kyiv' or 'New York'.
           </p>
         </div>
         <SubmitForm handleSubmit={handleSubmit} />
