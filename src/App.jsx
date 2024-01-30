@@ -53,7 +53,7 @@ export const App = () => {
         </div>
         <SubmitForm handleSubmit={handleSubmit} />
       </header>
-      <div className="App">
+      <main>
         {isLoading && (
           <ClipLoader
             color={"#ffffff"}
@@ -70,7 +70,7 @@ export const App = () => {
         ) : (
           ""
         )}
-      </div>
+      </main>
     </>
   );
 };
