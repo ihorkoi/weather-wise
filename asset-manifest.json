@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/weather-wize/static/css/main.7b3699fd.css",
-    "main.js": "/weather-wize/static/js/main.e374a36e.js",
-    "index.html": "/weather-wize/index.html",
-    "main.7b3699fd.css.map": "/weather-wize/static/css/main.7b3699fd.css.map",
-    "main.e374a36e.js.map": "/weather-wize/static/js/main.e374a36e.js.map"
+    "main.css": "/weather-wise/static/css/main.7b3699fd.css",
+    "main.js": "/weather-wise/static/js/main.fb4ffec7.js",
+    "index.html": "/weather-wise/index.html",
+    "main.7b3699fd.css.map": "/weather-wise/static/css/main.7b3699fd.css.map",
+    "main.fb4ffec7.js.map": "/weather-wise/static/js/main.fb4ffec7.js.map"
   },
   "entrypoints": [
     "static/css/main.7b3699fd.css",
-    "static/js/main.e374a36e.js"
+    "static/js/main.fb4ffec7.js"
   ]
 }
