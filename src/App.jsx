@@ -45,7 +45,7 @@ export const App = () => {
     <>
       <header>
         <div style={{ textAlign: "center" }}>
-          <h1>WeatherWize</h1>
+          <h1>WeatherWise</h1>
           <p>
             Enter a location or city name to check the current weather and
             forecast. For example, 'Kyiv' or 'New York.
