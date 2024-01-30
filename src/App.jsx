@@ -12,7 +12,7 @@ export const App = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const inputValue = evt.target.query.value;
+    const inputValue = evt.target.query.value.trim();
 
     if (!inputValue) {
       Notiflix.Notify.failure("Sorry, incorrect query");
