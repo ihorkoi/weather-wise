@@ -19,7 +19,7 @@ export const App = () => {
       evt.target.reset();
       return;
     }
-    if (!inputValue.match(/^[a-zA-Z]+$/)) {
+    if (!inputValue.match(/^[A-Za-z\s]+$/)) {
       Notiflix.Notify.failure("Please, form queries in English");
       evt.target.reset();
       return;
